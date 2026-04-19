@@ -186,11 +186,11 @@ export default function App() {
   }, [stream, hasStartedChat, cameraActive]);
 
   return (
-    <div className="w-full h-screen text-white overflow-hidden flex flex-col font-sans transition-all">
+    <div className="w-full h-[100dvh] text-white overflow-hidden flex flex-col font-sans transition-all">
       <div className="bg-wallpaper w-full h-full overflow-hidden flex flex-col relative">
         
         {/* Top Header */}
-        <header className="flex justify-between items-center p-6 z-10 shrink-0">
+        <header className="flex justify-between items-center p-4 md:p-6 z-10 shrink-0">
           <div className="flex items-center gap-3">
              <IrisLogo className="w-8 h-8" />
              <h1 className="font-semibold text-lg tracking-wide text-white">IRIS</h1>
@@ -212,11 +212,11 @@ export default function App() {
           
           {!hasStartedChat ? (
             /* START SCREEN GREETING */
-            <div className="flex-grow flex flex-col items-center justify-center pt-[8vh] px-4 animate-in fade-in duration-500 mb-[10vh]">
-               <h3 className="text-4xl text-white font-semibold tracking-tight mb-8 drop-shadow-lg text-center">What can I help you with today?</h3>
+            <div className="flex-grow flex flex-col items-center justify-center pt-[4vh] px-4 animate-in fade-in duration-500 mb-[4vh] md:mb-[10vh]">
+               <h3 className="text-3xl md:text-4xl text-white font-semibold tracking-tight mb-6 md:mb-8 drop-shadow-lg text-center px-2">What can I help you with today?</h3>
                
                {/* Main Center Input Bar */}
-               <div className="w-full max-w-3xl panel rounded-[28px] p-3 flex flex-col shadow-2xl relative">
+               <div className="w-full max-w-3xl panel rounded-[24px] md:rounded-[28px] p-2 md:p-3 flex flex-col shadow-2xl relative">
                  {attachedFiles.length > 0 && (
                    <div className="flex flex-wrap gap-2 mb-3 px-3">
                      {attachedFiles.map((file, i) => (
@@ -247,34 +247,34 @@ export default function App() {
                    </div>
                  )}
 
-                 <div className="flex justify-between items-center px-2">
-                    <button className="flex items-center gap-2 text-sm text-white/80 hover:text-white hover:bg-white/10 px-3 py-1.5 rounded-full transition-colors font-medium">
-                       <IrisLogo className="w-4 h-4" />
+                 <div className="flex justify-between items-center px-1 md:px-2">
+                    <button className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-white/80 hover:text-white hover:bg-white/10 px-2.5 md:px-3 py-1.5 rounded-full transition-colors font-medium">
+                       <IrisLogo className="w-3.5 h-3.5 md:w-4 md:h-4" />
                        Smart (IRIS) <ChevronDown className="w-3 h-3 opacity-60" />
                     </button>
-                    <div className="flex items-center gap-1">
-                       <label className="p-2.5 hover:bg-white/10 rounded-full cursor-pointer transition-colors text-white/80 hover:text-white">
-                          <Upload className="w-5 h-5"/>
+                    <div className="flex items-center gap-0.5 md:gap-1">
+                       <label className="p-2 md:p-2.5 hover:bg-white/10 rounded-full cursor-pointer transition-colors text-white/80 hover:text-white">
+                          <Upload className="w-4 h-4 md:w-5 md:h-5"/>
                           <input type="file" multiple className="hidden" onChange={handleFileUpload} />
                        </label>
-                       <button onClick={toggleCamera} className={`p-2.5 rounded-full transition-colors ${cameraActive ? 'bg-blue-500 text-white' : 'text-white/80 hover:text-white hover:bg-white/10'}`}>
-                          <Camera className="w-5 h-5"/>
+                       <button onClick={toggleCamera} className={`p-2 md:p-2.5 rounded-full transition-colors ${cameraActive ? 'bg-blue-500 text-white' : 'text-white/80 hover:text-white hover:bg-white/10'}`}>
+                          <Camera className="w-4 h-4 md:w-5 md:h-5"/>
                        </button>
                        <button 
                          disabled={isProcessing || (!input && attachedFiles.length===0 && !cameraActive)}
                          onClick={() => sendMessage()}
-                         className={`p-2.5 ml-1 rounded-full transition-colors ${input.trim() || attachedFiles.length || cameraActive ? 'bg-white text-black hover:bg-white/90' : 'text-white/40 bg-white/5 cursor-not-allowed'}`}
+                         className={`p-2 md:p-2.5 ml-0.5 md:ml-1 rounded-full transition-colors ${input.trim() || attachedFiles.length || cameraActive ? 'bg-white text-black hover:bg-white/90' : 'text-white/40 bg-white/5 cursor-not-allowed'}`}
                        >
-                          <Send className="w-5 h-5"/>
+                          <Send className="w-4 h-4 md:w-5 md:h-5"/>
                        </button>
                     </div>
                  </div>
                </div>
 
                {/* Suggestions */}
-               <div className="flex justify-center flex-wrap gap-2.5 mt-6">
+               <div className="flex justify-center flex-wrap gap-2 md:gap-2.5 mt-6 px-2">
                  {['Write a first draft', 'Get advice', 'Learn something new', 'Make a plan'].map(label => (
-                   <button key={label} onClick={() => sendMessage(label)} className="bg-black/30 hover:bg-white/10 border border-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm text-white/90 hover:text-white transition-colors duration-200">
+                   <button key={label} onClick={() => sendMessage(label)} className="bg-black/30 hover:bg-white/10 border border-white/10 backdrop-blur-md px-3.5 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm text-white/90 hover:text-white transition-colors duration-200">
                      {label}
                    </button>
                  ))}
@@ -286,10 +286,10 @@ export default function App() {
             <div className="flex-grow flex flex-col justify-between max-w-4xl mx-auto w-full h-full">
               
               {/* Messages Area */}
-              <div className="flex-grow overflow-y-auto px-4 py-6 space-y-6">
+              <div className="flex-grow overflow-y-auto px-3 md:px-4 py-6 space-y-6">
                 {messages.map((msg, idx) => (
                   <div key={idx} className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-[85%] flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+                    <div className={`max-w-[95%] md:max-w-[85%] flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                       {msg.role !== 'user' && (
                         <div className="flex items-center gap-2 mb-2 ml-1">
                           <IrisLogo className="w-5 h-5"/>
@@ -301,7 +301,7 @@ export default function App() {
                         {msg.image && (
                           <img src={msg.image} alt="Vision context" className="max-w-[300px] rounded-xl mb-3 shadow-lg border border-white/10" />
                         )}
-                        <div className="text-[15px] leading-relaxed prose-p:my-2 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-pre:p-4 prose-pre:rounded-xl prose-a:text-blue-400 break-words">
+                        <div className="text-[14px] md:text-[15px] leading-relaxed prose-p:my-2 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-pre:p-4 prose-pre:rounded-xl prose-a:text-blue-400 break-words overflow-hidden">
                           <ReactMarkdown>{msg.content}</ReactMarkdown>
                         </div>
                       </div>
@@ -323,8 +323,8 @@ export default function App() {
               </div>
 
               {/* Chat Input Bar Pinned to Target Bottom */}
-              <div className="p-4 bg-transparent shrink-0">
-                <div className="w-full panel bg-[#161b26]/95 border border-white/10 rounded-[28px] p-2 flex flex-col shadow-2xl">
+              <div className="p-2 md:p-4 bg-transparent shrink-0">
+                <div className="w-full panel bg-[#161b26]/95 border border-white/10 rounded-[20px] md:rounded-[28px] p-1.5 md:p-2 flex flex-col shadow-2xl">
                    {attachedFiles.length > 0 && (
                      <div className="flex flex-wrap gap-2 mb-2 px-3 pt-2">
                        {attachedFiles.map((file, i) => (
@@ -351,23 +351,23 @@ export default function App() {
                          }
                        }}
                        placeholder="Message IRIS" 
-                       className="w-full bg-transparent text-white placeholder-white/40 focus:outline-none resize-none pt-2.5 pb-2.5 px-4 text-[15px]"
+                       className="w-full bg-transparent text-white placeholder-white/40 focus:outline-none resize-none pt-2.5 pb-2.5 px-3 md:px-4 text-[14px] md:text-[15px]"
                        rows={1}
                      />
-                     <div className="flex items-center pb-1 pr-1 gap-1">
-                        <label className="p-2 hover:bg-white/10 rounded-full cursor-pointer transition-colors text-white/70 hover:text-white">
-                           <Upload className="w-5 h-5"/>
+                     <div className="flex items-center pb-1 pr-1 gap-0.5 md:gap-1">
+                        <label className="p-1.5 md:p-2 hover:bg-white/10 rounded-full cursor-pointer transition-colors text-white/70 hover:text-white">
+                           <Upload className="w-4 h-4 md:w-5 md:h-5"/>
                            <input type="file" multiple className="hidden" onChange={handleFileUpload} />
                         </label>
-                        <button onClick={toggleCamera} className={`p-2 rounded-full transition-colors ${cameraActive ? 'text-blue-400 bg-blue-500/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}>
-                           <Camera className="w-5 h-5"/>
+                        <button onClick={toggleCamera} className={`p-1.5 md:p-2 rounded-full transition-colors ${cameraActive ? 'text-blue-400 bg-blue-500/20' : 'text-white/70 hover:text-white hover:bg-white/10'}`}>
+                           <Camera className="w-4 h-4 md:w-5 md:h-5"/>
                         </button>
                         <button 
                           disabled={isProcessing || (!input && attachedFiles.length===0 && !cameraActive)}
                           onClick={() => sendMessage()}
-                          className={`p-2 ml-1 rounded-full transition-colors ${input.trim() || attachedFiles.length || cameraActive ? 'bg-white text-black hover:bg-white/90' : 'bg-white/5 text-white/30 cursor-not-allowed'}`}
+                          className={`p-1.5 md:p-2 ml-0.5 md:ml-1 rounded-full transition-colors ${input.trim() || attachedFiles.length || cameraActive ? 'bg-white text-black hover:bg-white/90' : 'bg-white/5 text-white/30 cursor-not-allowed'}`}
                         >
-                           <Send className="w-5 h-5"/>
+                           <Send className="w-4 h-4 md:w-5 md:h-5"/>
                         </button>
                      </div>
                    </div>
