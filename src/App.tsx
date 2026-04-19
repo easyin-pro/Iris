@@ -193,7 +193,6 @@ export default function App() {
         <header className="flex justify-between items-center p-4 md:p-6 z-10 shrink-0">
           <div className="flex items-center gap-3">
              <IrisLogo className="w-8 h-8" />
-             <h1 className="font-semibold text-lg tracking-wide text-white">IRIS</h1>
           </div>
           <div className="flex gap-4">
              {hasStartedChat && (
@@ -247,11 +246,7 @@ export default function App() {
                    </div>
                  )}
 
-                 <div className="flex justify-between items-center px-1 md:px-2">
-                    <button className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-white/80 hover:text-white hover:bg-white/10 px-2.5 md:px-3 py-1.5 rounded-full transition-colors font-medium">
-                       <IrisLogo className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                       Smart (IRIS) <ChevronDown className="w-3 h-3 opacity-60" />
-                    </button>
+                 <div className="flex justify-end items-center px-1 md:px-2">
                     <div className="flex items-center gap-0.5 md:gap-1">
                        <label className="p-2 md:p-2.5 hover:bg-white/10 rounded-full cursor-pointer transition-colors text-white/80 hover:text-white">
                           <Upload className="w-4 h-4 md:w-5 md:h-5"/>
@@ -293,7 +288,6 @@ export default function App() {
                       {msg.role !== 'user' && (
                         <div className="flex items-center gap-2 mb-2 ml-1">
                           <IrisLogo className="w-5 h-5"/>
-                          <span className="text-xs font-medium text-white/80">IRIS</span>
                         </div>
                       )}
                       
@@ -314,7 +308,6 @@ export default function App() {
                     <div className="max-w-[85%] flex flex-col items-start">
                       <div className="flex items-center gap-2 mb-2 ml-1">
                         <IrisLogo className="w-5 h-5 opacity-70 animate-pulse"/>
-                        <span className="text-xs font-medium text-white/60">IRIS is typing...</span>
                       </div>
                     </div>
                   </div>
@@ -350,7 +343,7 @@ export default function App() {
                            sendMessage();
                          }
                        }}
-                       placeholder="Message IRIS" 
+                       placeholder="Message" 
                        className="w-full bg-transparent text-white placeholder-white/40 focus:outline-none resize-none pt-2.5 pb-2.5 px-3 md:px-4 text-[14px] md:text-[15px]"
                        rows={1}
                      />
@@ -372,7 +365,7 @@ export default function App() {
                      </div>
                    </div>
                 </div>
-                <div className="text-center mt-3 text-[11px] text-white/40">IRIS can make mistakes. Check important info.</div>
+                <div className="text-center mt-3 text-[11px] text-white/40">AI can make mistakes. Check important info.</div>
               </div>
 
             </div>
