@@ -1,0 +1,9 @@
+{
+  "name": "Project IRIS",
+  "description": "Integrated Real-time Intelligence System - The ultimate bridge between physical world, digital archive, and creative imagination.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": []
+}
