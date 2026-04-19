@@ -15,11 +15,9 @@ body {
 }
 
 .bg-wallpaper {
-  /* Using a blurred, soft spring/flower aesthetic wallpaper */
-  background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=2500');
+  /* Using a deeply clean and sophisticated dark gradient */
+  background: radial-gradient(circle at top left, #1a1e28 0%, #0f1115 100%);
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .panel {
