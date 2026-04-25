@@ -13,6 +13,20 @@ type Message = {
   image?: string; 
 };
 
+// Custom simplified gradient logo for the modern theme
+const IrisLogo = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="irisModern" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f43f5e" />
+        <stop offset="50%" stopColor="#8b5cf6" />
+        <stop offset="100%" stopColor="#3b82f6" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#irisModern)" d="M50 15 C 20 15 15 50 15 50 C 15 50 20 85 50 85 C 80 85 85 50 85 50 C 85 50 80 15 50 15 Z M50 70 C 39 70 30 61 30 50 C 30 39 39 30 50 30 C 61 30 70 39 70 50 C 70 61 61 70 50 70 Z M50 40 C 44.5 40 40 44.5 40 50 C 40 55.5 44.5 60 50 60 C 55.5 60 60 55.5 60 50 C 60 44.5 55.5 40 50 40 Z" />
+  </svg>
+);
+
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -178,7 +192,8 @@ export default function App() {
         {/* Top Header */}
         <header className="flex justify-between items-center p-4 md:p-6 z-10 shrink-0">
           <div className="flex items-center gap-3">
-             {/* Logo removed */}
+             <IrisLogo className="w-8 h-8" />
+             <h1 className="font-semibold text-lg tracking-wide text-white">IRIS</h1>
           </div>
           <div className="flex gap-4">
              {hasStartedChat && (
@@ -232,7 +247,11 @@ export default function App() {
                    </div>
                  )}
 
-                 <div className="flex justify-end items-center px-1 md:px-2">
+                 <div className="flex justify-between items-center px-1 md:px-2">
+                    <button className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-white/80 hover:text-white hover:bg-white/10 px-2.5 md:px-3 py-1.5 rounded-full transition-colors font-medium">
+                       <IrisLogo className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                       Smart (IRIS) <ChevronDown className="w-3 h-3 opacity-60" />
+                    </button>
                     <div className="flex items-center gap-0.5 md:gap-1">
                        <label className="p-2 md:p-2.5 hover:bg-white/10 rounded-full cursor-pointer transition-colors text-white/80 hover:text-white">
                           <Upload className="w-4 h-4 md:w-5 md:h-5"/>
@@ -252,7 +271,15 @@ export default function App() {
                  </div>
                </div>
 
-               {/* Suggestions Removed */}
+               {/* Suggestions */}
+               <div className="flex justify-center flex-wrap gap-2 md:gap-2.5 mt-6 px-2">
+                 {['Write a first draft', 'Get advice', 'Learn something new', 'Make a plan'].map(label => (
+                   <button key={label} onClick={() => sendMessage(label)} className="bg-black/30 hover:bg-white/10 border border-white/10 backdrop-blur-md px-3.5 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm text-white/90 hover:text-white transition-colors duration-200">
+                     {label}
+                   </button>
+                 ))}
+               </div>
+
             </div>
           ) : (
             /* ACTIVE CHAT VIEW */
@@ -265,7 +292,8 @@ export default function App() {
                     <div className={`max-w-[95%] md:max-w-[85%] flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                       {msg.role !== 'user' && (
                         <div className="flex items-center gap-2 mb-2 ml-1">
-                          <span className="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500/80 text-white text-xs font-bold shadow-md">AI</span>
+                          <IrisLogo className="w-5 h-5"/>
+                          <span className="text-xs font-medium text-white/80">IRIS</span>
                         </div>
                       )}
                       
@@ -285,7 +313,8 @@ export default function App() {
                   <div className="w-full flex justify-start">
                     <div className="max-w-[85%] flex flex-col items-start">
                       <div className="flex items-center gap-2 mb-2 ml-1">
-                        <span className="w-5 h-5 flex items-center justify-center rounded-full bg-blue-500/80 text-white text-[10px] shadow-md animate-pulse">...</span>
+                        <IrisLogo className="w-5 h-5 opacity-70 animate-pulse"/>
+                        <span className="text-xs font-medium text-white/60">IRIS is typing...</span>
                       </div>
                     </div>
                   </div>
@@ -321,7 +350,7 @@ export default function App() {
                            sendMessage();
                          }
                        }}
-                       placeholder="Message" 
+                       placeholder="Message IRIS" 
                        className="w-full bg-transparent text-white placeholder-white/40 focus:outline-none resize-none pt-2.5 pb-2.5 px-3 md:px-4 text-[14px] md:text-[15px]"
                        rows={1}
                      />
@@ -343,7 +372,7 @@ export default function App() {
                      </div>
                    </div>
                 </div>
-                <div className="text-center mt-3 text-[11px] text-white/40">AI can make mistakes. Check important info.</div>
+                <div className="text-center mt-3 text-[11px] text-white/40">IRIS can make mistakes. Check important info.</div>
               </div>
 
             </div>
